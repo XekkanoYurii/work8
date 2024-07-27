@@ -63,17 +63,21 @@ const images = [
     description: 'Lighthouse Coast Sea',
   },
 ];
+const createEL = images => {
+  return `<li class="gallery-item">
+  <a class="gallery-link" href="large-image.jpg">
+    <img
+      class="gallery-image"
+      src="${images.preview}"
+      data-source="${images.original}"
+      alt="${images.description}"
+    />
+  </a>
+</li>`
+};
+const productsCards = images.map((el) => createEL(el)).join('');
+console.log(productsCards);
 
+const galleryUl = document.querySelector('.gallery');
 
-
-//  Shablon
-// <li class="gallery-item">
-//   <a class="gallery-link" href="large-image.jpg">
-//     <img
-//       class="gallery-image"
-//       src="small-image.jpg"
-//       data-source="large-image.jpg"
-//       alt="Image description"
-//     />
-//   </a>
-// </li>
+galleryUl.innerHTML = productsCards;
